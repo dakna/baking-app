@@ -1,4 +1,4 @@
-package udacity.knapp.app.bakingapp;
+package app.knapp.udacity.bakingapp;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package udacity.knapp.app.bakingapp.model;
+package app.knapp.udacity.bakingapp.model;
 
 public class Ingredient {
     private Double quantity;

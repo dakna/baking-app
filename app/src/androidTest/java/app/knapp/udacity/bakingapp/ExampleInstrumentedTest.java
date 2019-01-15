@@ -1,4 +1,4 @@
-package udacity.knapp.app.bakingapp;
+package app.knapp.udacity.bakingapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

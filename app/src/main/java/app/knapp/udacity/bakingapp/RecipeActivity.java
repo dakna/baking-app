@@ -1,4 +1,4 @@
-package udacity.knapp.app.bakingapp;
+package app.knapp.udacity.bakingapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,7 +14,8 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.List;
 
-import udacity.knapp.app.bakingapp.model.Recipe;
+import app.knapp.udacity.bakingapp.model.Recipe;
+
 
 public class RecipeActivity extends AppCompatActivity {
     private static final String TAG = "RecipeActivity";
