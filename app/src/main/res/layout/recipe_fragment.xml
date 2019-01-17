@@ -5,10 +5,6 @@
     android:layout_height="match_parent"
     tools:context="app.knapp.udacity.bakingapp.ui.RecipeFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="RecipeList" />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_recipe_list"
         android:layout_width="match_parent"
