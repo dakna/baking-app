@@ -14,7 +14,6 @@ import java.util.Locale;
 import app.knapp.udacity.bakingapp.R;
 import app.knapp.udacity.bakingapp.model.Ingredient;
 import app.knapp.udacity.bakingapp.model.Recipe;
-import app.knapp.udacity.bakingapp.model.Step;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -52,10 +51,10 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             StringBuilder ingredientText = new StringBuilder();
             for (int i = 0; i < recipe.getIngredients().size(); i++) {
                 Ingredient ingredient = recipe.getIngredients().get(i);
-                //ingredientText.append(String.format(Locale.getDefault(), "• %s (%d %s)", ingredient.getIngredient(), ingredient.getQuantity(), ingredient.getMeasure()));
                 ingredientText.append(String.format(Locale.getDefault(), "• %s (%f %s)", ingredient.getIngredient(), ingredient.getQuantity(), ingredient.getMeasure()));
-                if (i != recipe.getIngredients().size() - 1)
+                if (i != recipe.getIngredients().size() - 1) {
                     ingredientText.append("\n");
+                }
             }
             viewHolder.tvIngredients.setText(ingredientText.toString());
 
@@ -66,8 +65,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (onStepSelectedListener != null)
-                        onStepSelectedListener.onStepSelected(recipe.getSteps().get(position - INGREDIENT_ITEMS));
+                    if (onStepSelectedListener != null) {
+                        onStepSelectedListener.onStepSelected(position - INGREDIENT_ITEMS);
+                    }
                 }
             });
         }
@@ -80,10 +80,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             return 0;
         else
             return 1;
-    }
-
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
     }
 
 
@@ -122,7 +118,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
     public interface OnStepSelectedListener {
-        void onStepSelected(Step step);
+        void onStepSelected(Integer index);
     }
 
 }

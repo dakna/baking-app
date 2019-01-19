@@ -59,23 +59,16 @@ public class RecipeFragment extends Fragment {
             @Override
             public void onChanged(@Nullable Recipe recipe) {
                 Log.d(TAG, "onChanged Fragment: size of recipe steps " + recipe.getSteps().size());
-
                 rvRecipe.setAdapter(new RecipeAdapter(getContext(), viewModel.getSelectedRecipe().getValue(), (RecipeActivity) getActivity()));
             }
         });
 
         rvRecipe.setHasFixedSize(true);
-        boolean displayWide = getResources().getBoolean(R.bool.displayWide);
-        if (displayWide) {
-            rvRecipe.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), 3));
-            // Needs item spacing for gridlayoutmanager
-        } else {
-            rvRecipe.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-            rvRecipe.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
-        }
+
+        rvRecipe.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        rvRecipe.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
 
         rvRecipe.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener());
-        //rvRecipeList.setAdapter(new RecipeListAdapter(getContext(), viewModel.getRecipeList().getValue(), (RecipeActivity) getActivity()));
 
     }
 

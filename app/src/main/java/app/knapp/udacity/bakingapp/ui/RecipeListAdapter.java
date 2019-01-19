@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import butterknife.ButterKnife;
 
 
 public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder> {
+    private static final String TAG = "RecipeListAdapter";
     private Context context;
     private List<Recipe> recipeList;
     private RecipeListAdapter.OnRecipeSelectedListener onRecipeSelectedListener;
@@ -41,6 +43,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         holder.tvRecipeName.setText(recipeList.get(position).getName());
         holder.tvServings.setText(context.getString(R.string.servings, recipeList.get(position).getServings()));
         String recipeImage = recipeList.get(position).getImage();
+        Log.d(TAG, "onBindViewHolder: recipeImage " + recipeImage);
         if (!recipeImage.isEmpty()) {
            Picasso.get()
                     .load(recipeImage)
