@@ -5,5 +5,7 @@
     <string name="recipe_image">Recipe image</string>
     <string name="title_list">Recipes</string>
     <string name="title_step">Step %d</string>
+    <string name="loading_recipe_data">Loading recipe data ...</string>
+    <string name="menu_add_to_widget">Add Recipe to Widget</string>
 
 </resources>

@@ -7,20 +7,20 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.List;
 
 import app.knapp.udacity.bakingapp.R;
 import app.knapp.udacity.bakingapp.RecipeActivity;
 import app.knapp.udacity.bakingapp.model.Recipe;
+import app.knapp.udacity.bakingapp.widget.RecipeWidgetService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -40,10 +40,9 @@ public class RecipeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.recipe_fragment, container, false);
         ButterKnife.bind(this, view);
-
-
 
         return view;
     }
@@ -72,5 +71,22 @@ public class RecipeFragment extends Fragment {
 
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
+        Log.d(TAG, "onCreateOptionsMenu: ");
+
+        menuInflater.inflate(R.menu.recipe, menu);
+        super.onCreateOptionsMenu(menu, menuInflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_add_to_widget) {
+            Log.d(TAG, "onOptionsItemSelected: adding recipe to widget");
+            RecipeWidgetService.updateWidget(getActivity(), viewModel.getSelectedRecipe().getValue());
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
+    }
 
 }
