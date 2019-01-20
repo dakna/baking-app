@@ -2,7 +2,9 @@ package app.knapp.udacity.bakingapp;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -40,6 +42,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeListAdapt
     public SharedViewModel viewModel;
     private boolean displayWide;
     private int stackIdentifier;
+    private RecipeIdlingResource idlingResource;
 
 
     @Override
@@ -161,5 +164,12 @@ public class RecipeActivity extends AppCompatActivity implements RecipeListAdapt
         showStep();
     }
 
-
+    @VisibleForTesting
+    @NonNull
+    public RecipeIdlingResource getIdlingResource() {
+        if(idlingResource == null) {
+            idlingResource = new RecipeIdlingResource();
+        }
+        return idlingResource;
+    }
 }
